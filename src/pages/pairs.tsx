@@ -23,8 +23,8 @@ const animateHomePage: TAnimateHomePage = (wrapperRef, bannerRef) => {
   tl.set(wrapperElements, { visibility: 'visible' });
   tl.set(heroImageElement, { visibility: 'visible' });
 
-  tl.from(heroImageElement, { duration: 0.5, x: 200, opacity: 0 }, 'showHeader+=0.3')
-    .from(titleElement, { duration: 0.5, x: -200, opacity: 0 }, 'showHeader+=0.5')
+  tl.from(heroImageElement, { duration: 0.5, x: 200, opacity: 0 })
+    .from(titleElement, { duration: 0.5, x: -200, opacity: 0 }, 'showHeader')
     .from(
       descriptionElement,
       {
@@ -32,7 +32,7 @@ const animateHomePage: TAnimateHomePage = (wrapperRef, bannerRef) => {
         x: -200,
         opacity: 0,
       },
-      'showHeader+=0.7'
+      'showHeader+=0.2'
     )
     .addLabel('showHeader');
 };
