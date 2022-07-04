@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { PhotoColumn, StyledImage, Wrapper } from './PhotosContainer.styled';
-import { showElement } from '../../helpers/showElement';
 import { splitIntoMultipleArrays } from '../../helpers/splitIntoMultipleArrays';
+import { showElement } from '../../helpers/showElement';
 
 interface IImageData {
   datoCmsPortfolio: {
@@ -25,14 +25,27 @@ export const PhotosContainer = () => {
   const { portfolioContent } = data.datoCmsPortfolio;
   const portfolioContentCols = splitIntoMultipleArrays(portfolioContent, 3);
 
-  console.log(portfolioContentCols);
+  useEffect(() => {
+    const portfolioElements = document.querySelectorAll<HTMLDivElement>('.portfolioElement');
+    const handleScroll = (e: Event) => showElement(portfolioElements);
+
+    showElement(portfolioElements);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <Wrapper>
       {portfolioContentCols.map((col, idx) => (
         <PhotoColumn key={`col-${idx}`}>
           {col.map((image, photIdx) => (
-            <StyledImage image={image.gatsbyImageData} alt='ss' key={`col-${idx}-photo-${photIdx}`} />
+            <StyledImage
+              image={image.gatsbyImageData}
+              className={'portfolioElement'}
+              alt='ss'
+              key={`col-${idx}-photo-${photIdx}`}
+            />
           ))}
         </PhotoColumn>
       ))}

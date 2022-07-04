@@ -1,15 +1,7 @@
-export const showElement = (imageElements: NodeListOf<HTMLElement>, e?: Event) => {
-  const imageElementsArray = Array.from(imageElements);
-  const showAtPoint = 0.9;
-
-  imageElementsArray.forEach((element) => {
-    const elementRect = element.offsetTop;
-    const isInView =
-      elementRect <=
-      (window.innerHeight * showAtPoint || document.documentElement.clientHeight * showAtPoint);
-
-    if (isInView) {
-      element.classList.add('visible');
-    }
+export const showElement = (imageElements: NodeListOf<HTMLDivElement>) => {
+  const viewPoint = window.scrollY + window.innerHeight * 0.9;
+  imageElements.forEach((photo) => {
+    const isPhotoOverViewPoint = viewPoint >= photo.offsetTop;
+    if (isPhotoOverViewPoint) photo.classList.add('visible');
   });
 };

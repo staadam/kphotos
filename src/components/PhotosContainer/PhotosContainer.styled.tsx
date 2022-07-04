@@ -41,8 +41,8 @@ export const PhotoColumn = styled.div`
 `;
 
 export const StyledImage = styled(GatsbyImage)`
-  /* opacity: 0; */
-  /* transform: translateY(100px); */
+  opacity: 0;
+  transform: translateY(100px);
   transition: 0.3s opacity, 0.3s transform;
   margin-bottom: 30px;
 
