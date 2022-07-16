@@ -4,5 +4,8 @@ export const splitIntoMultipleArrays = <T>(baseArray: T[], outputRowsCount: numb
     const subArrayIdx = (idx + 1) % outputRowsCount;
     newArrays[subArrayIdx].push(element);
   });
+  
+  newArrays.sort((a,b)=>a.length - b.length);
+
   return newArrays;
 };
