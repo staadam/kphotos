@@ -1,7 +1,6 @@
-import type { GatsbyConfig } from 'gatsby';
 require('dotenv').config();
 
-const config: GatsbyConfig = {
+module.exports = {
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
   },
@@ -40,4 +39,3 @@ const config: GatsbyConfig = {
   ],
 };
 
-export default config;

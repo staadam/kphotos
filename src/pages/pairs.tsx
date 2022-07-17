@@ -4,6 +4,7 @@ import { Layout } from '../components/layouts/Layout';
 import { Wrapper } from '../components/IndexPage/IndexPage.styled';
 import { Header } from '../components/Header/Header';
 import { Banner } from '../components/Banner/Banner';
+import axios from 'axios';
 
 type TAnimateHomePage = (
   wrapperRef: React.RefObject<HTMLDivElement>,
@@ -43,6 +44,11 @@ const IndexPage = () => {
 
   useEffect(() => {
     animateHomePage(wrapperRef, bannerRef);
+
+    axios
+      .post('/.netlify/functions/test', {})
+      .then(({ data }) => console.log(data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
