@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React from 'react';
+import { graphql } from 'gatsby';
+
+import { IContactProps } from '../utils/types/pages/contact';
+
 import { Layout } from '../components/layouts/Layout';
-import { Wrapper } from '../components/IndexPage/IndexPage.styled';
-import { Header } from '../components/Header/Header';
-import { Banner } from '../components/Banner/Banner';
-import axios from 'axios';
 import { ContactForm } from '../components/ContactForm/ContactForm';
+import { Banner } from '../components/Banner/Banner';
+import { Wrapper } from '../components/ContactPage/ContactPage.styled';
 
 type TAnimateHomePage = (
   wrapperRef: React.RefObject<HTMLDivElement>,
@@ -36,23 +37,25 @@ const animateHomePage: TAnimateHomePage = (wrapperRef, bannerRef) => {
   //   .addLabel('showHeader');
 };
 
-const IndexPage = () => {
-  // const wrapperRef = useRef<HTMLDivElement>(null);
-  // const bannerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // animateHomePage(wrapperRef, bannerRef);
-  }, []);
-
+const Contact = ({ data }: IContactProps) => {
   return (
     <Layout>
-      <ContactForm />
-      {/* <Wrapper ref={wrapperRef}>
-        <Header />
-        <Banner ref={bannerRef} />
-      </Wrapper> */}
+      <Wrapper>
+        <ContactForm />
+        <Banner image={data.file.childImageSharp.gatsbyImageData} alt={':D'} />
+      </Wrapper>
     </Layout>
   );
 };
 
-export default IndexPage;
+export const query = graphql`
+  {
+    file(relativePath: { eq: "photographer.png" }) {
+      childImageSharp {
+        gatsbyImageData(quality: 100, placeholder: BLURRED)
+      }
+    }
+  }
+`;
+
+export default Contact;

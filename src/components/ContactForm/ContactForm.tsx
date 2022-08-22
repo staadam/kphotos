@@ -5,10 +5,12 @@ import { useFormik } from 'formik';
 import { initialValues } from '../../utils/constants/contactForm/initialValues';
 import { validateContactForm } from '../../utils/validation/validateContactForm';
 import { TextField } from '../TextField/TextField';
+import { FormWrapper } from './ContactForm.styled';
+import { StyledButton } from '../StyledButton/StyledButton';
 
 export const ContactForm = () => {
   const onSubmit = (values: any) => {
-    axios.post('/.netlify/functions/test', values).then(({ data }) => {});
+    axios.post('/.netlify/functions/sendMail', values).then(({ data }) => {});
   };
 
   const formik = useFormik({
@@ -18,7 +20,7 @@ export const ContactForm = () => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <FormWrapper onSubmit={formik.handleSubmit}>
       <TextField
         id='name'
         name='name'
@@ -49,7 +51,9 @@ export const ContactForm = () => {
         isInvalid={!!(formik.errors.text && formik.touched.text)}
         isTextarea
       />
-      <button type='submit'> send message</button>
-    </form>
+      <StyledButton type='submit' onClick={() => console.log('executed')}>
+        Wyślij wiadomość
+      </StyledButton>
+    </FormWrapper>
   );
 };

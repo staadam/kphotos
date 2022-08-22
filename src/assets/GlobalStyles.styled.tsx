@@ -50,4 +50,14 @@ export const GlobalStyle = createGlobalStyle`
       border-collapse: collapse;
       border-spacing: 0;
   }
+  input, textarea, button{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-family: 'Playfair Display';
+  }
+  
+  textarea{
+    resize: none;
+  }
 `;

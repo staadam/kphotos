@@ -1,6 +1,6 @@
 import React from 'react';
 import { ITextFieldProps } from './TextFieldTypes';
-import { StyledInput } from '../StyledInput/StyledInput.styled';
+import { StyledInput, StypedLabel, StyledTextarea, Wrapper } from './TextField.styled';
 
 export const TextField = ({
   id,
@@ -13,8 +13,19 @@ export const TextField = ({
   isInvalid,
   ...rest
 }: ITextFieldProps) => {
-  console.log(name, isInvalid);
+  if (isTextarea) {
+    return (
+      <Wrapper>
+        <StyledTextarea id={id} name={name} {...rest} />
+        <StypedLabel htmlFor={id}>{label}</StypedLabel>
+      </Wrapper>
+    );
+  }
 
-  if (isTextarea) return <textarea id={id} name={name} {...rest} />;
-  return <StyledInput id={id} name={name} type={type} {...rest} />;
+  return (
+    <Wrapper>
+      <StyledInput id={id} name={name} type={type} {...rest} />
+      <StypedLabel htmlFor={id}>{label}</StypedLabel>
+    </Wrapper>
+  );
 };
