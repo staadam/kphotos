@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
+import gsap from 'gsap';
 
 import { IContactProps } from '../utils/types/pages/contact';
 
@@ -8,39 +9,40 @@ import { ContactForm } from '../components/ContactForm/ContactForm';
 import { Banner } from '../components/Banner/Banner';
 import { Wrapper } from '../components/ContactPage/ContactPage.styled';
 
-type TAnimateHomePage = (
-  wrapperRef: React.RefObject<HTMLDivElement>,
-  bannerRef: React.RefObject<HTMLDivElement>
-) => void;
+type TanimateContactPage = (wrapperRef: React.RefObject<HTMLDivElement>) => void;
 
-const animateHomePage: TAnimateHomePage = (wrapperRef, bannerRef) => {
-  // const isWrapperRefSet = wrapperRef.current;
-  // if (!isWrapperRefSet) return;
-  // const wrapperElements = wrapperRef.current.children[0];
-  // const heroImageElement = bannerRef.current;
-  // const titleElement = wrapperElements.querySelector('h1');
-  // const descriptionElement = wrapperElements.querySelector('p');
-  // const tl: GSAPTimeline = gsap.timeline();
-  // tl.set(wrapperElements, { visibility: 'visible' });
-  // tl.set(heroImageElement, { visibility: 'visible' });
-  // tl.from(heroImageElement, { duration: 0.5, x: 200, opacity: 0 })
-  //   .from(titleElement, { duration: 0.5, x: -200, opacity: 0 }, 'showHeader')
-  //   .from(
-  //     descriptionElement,
-  //     {
-  //       duration: 0.5,
-  //       x: -200,
-  //       opacity: 0,
-  //     },
-  //     'showHeader+=0.2'
-  //   )
-  //   .addLabel('showHeader');
+const animateContactPage: TanimateContactPage = (wrapperRef) => {
+  const isWrapperRefSet = wrapperRef.current;
+  if (!isWrapperRefSet) return;
+
+  const formElement = wrapperRef.current.children[0];
+  const bannerElement = wrapperRef.current.children[1];
+
+  const formChildren = formElement.childNodes;
+
+  const tl: GSAPTimeline = gsap.timeline();
+  tl.set(bannerElement, { visibility: 'visible' });
+  tl.set(formChildren, { visibility: 'visible' });
+
+  tl.from(bannerElement, { duration: 0.5, x: 200, opacity: 0, delay: 0.5 });
+
+  formChildren.forEach((child, idx) => {
+    tl.from(child, { duration: 0.4, x: -200, opacity: 0, delay: idx / 5 }, 'showFormElements');
+  });
+
+  tl.addLabel('showFormElements');
 };
 
 const Contact = ({ data }: IContactProps) => {
+  const wrapperRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+
+  useEffect(() => {
+    animateContactPage(wrapperRef);
+  });
+
   return (
     <Layout>
-      <Wrapper>
+      <Wrapper ref={wrapperRef}>
         <ContactForm />
         <Banner image={data.file.childImageSharp.gatsbyImageData} alt={':D'} />
       </Wrapper>

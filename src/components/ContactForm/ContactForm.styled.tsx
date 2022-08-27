@@ -9,6 +9,10 @@ export const FormWrapper = styled.form`
   margin-top: 50px;
   padding-bottom: 50px;
 
+  & > * {
+    visibility: hidden;
+  }
+
   @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
     grid-template-columns: 1fr 45%;
     margin-top: 100px;

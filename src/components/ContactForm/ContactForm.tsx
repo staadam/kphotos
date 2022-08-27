@@ -32,11 +32,6 @@ export const ContactForm = () => {
     <Formik initialValues={initialValues} onSubmit={onSubmit} validate={validateContactForm}>
       {(props) => (
         <FormWrapper onSubmit={props.handleSubmit}>
-          <ReCAPTCHA
-            sitekey={process.env.GATSBY_RECAPTCHA_PUBLIC_KEY as string}
-            size='invisible'
-            ref={reRef as React.LegacyRef<ReCAPTCHA>}
-          />
           <Field
             id='name'
             name='name'
@@ -75,6 +70,11 @@ export const ContactForm = () => {
             This site is protected by reCAPTCHA and the Google{' '}
             <a href='https://policies.google.com/privacy'>Privacy Policy</a> and{' '}
             <a href='https://policies.google.com/terms'>Terms of Service</a> apply.
+            <ReCAPTCHA
+              sitekey={process.env.GATSBY_RECAPTCHA_PUBLIC_KEY as string}
+              size='invisible'
+              ref={reRef as React.LegacyRef<ReCAPTCHA>}
+            />
           </ReCAPTCHAPolicy>
         </FormWrapper>
       )}
