@@ -5,6 +5,7 @@ export const theme = {
       background: '#FAFFFB',
       white: '#FFF',
       black: '#171717',
+      error: '#ff3030',
     },
     fontSize: {
       xxl: '52px',

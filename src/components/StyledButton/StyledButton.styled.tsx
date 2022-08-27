@@ -31,7 +31,7 @@ export const ButtonWrapper = styled.button`
     width: 100%;
 
     transform: scaleX(0);
-    transition: transform 0.2s;
+    transition: transform 0.3s;
     transform-origin: right center;
   }
 

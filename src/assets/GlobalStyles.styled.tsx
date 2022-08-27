@@ -60,4 +60,8 @@ export const GlobalStyle = createGlobalStyle`
   textarea{
     resize: none;
   }
+
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
 `;

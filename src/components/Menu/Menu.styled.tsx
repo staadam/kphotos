@@ -78,12 +78,13 @@ const StyledLink = styled(Link)`
     background-color: ${({ theme }) => theme.colors.main};
 
     transform: scaleX(0);
-    transition: 0.35s transform ease-out;
-    transform-origin: left center;
+    transition: 0.3s transform ease-out;
+    transform-origin: right center;
   }
 
   &:hover::before {
     transform: scaleX(1);
+    transform-origin: left center;
   }
 
   &.active::before {

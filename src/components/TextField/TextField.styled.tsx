@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   margin-bottom: 40px;
 `;
 
-export const StypedLabel = styled.label`
+export const StypedLabel = styled.label<{ isInvalid: boolean }>`
   order: 1;
   display: block;
   font-size: ${({ theme: { fontSize } }) => fontSize.m};
@@ -24,7 +24,7 @@ export const StypedLabel = styled.label`
 
     width: 100%;
     height: 2px;
-    background-color: ${({ theme: { colors } }) => colors.main};
+    background-color: ${({ isInvalid, theme: { colors } }) => (isInvalid ? colors.error : colors.main)};
   }
 
   &::before {
@@ -38,12 +38,12 @@ export const StypedLabel = styled.label`
 
   *:focus + &::before {
     transform: scaleX(0);
-    transition: transform 0.5s;
+    transition: transform 0.4s;
   }
 
   *:focus + &::after {
     transform: scaleX(1);
-    transition: transform 0.5s 0.3s;
+    transition: transform 0.4s 0.2s;
   }
 `;
 

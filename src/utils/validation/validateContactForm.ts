@@ -1,5 +1,5 @@
 import { contactFormSchema } from '../schema/contactForm';
-import { IContactFormInit } from '../constants/contactForm/initialValues';
+import { IContactFormValues } from '../constants/contactForm/initialValues';
 
 interface IErrors {
   name?: string;
@@ -7,7 +7,7 @@ interface IErrors {
   text?: string;
 }
 
-type IValidateContactForm = (values: IContactFormInit) => Promise<IErrors>;
+type IValidateContactForm = (values: IContactFormValues) => Promise<IErrors>;
 
 export const validateContactForm: IValidateContactForm = async (values: any) => {
   let errors = {};
