@@ -2,6 +2,7 @@ export const theme = {
   light: {
     colors: {
       main: '#88896F',
+      lightMain: '#a6a788',
       background: '#FAFFFB',
       white: '#FFF',
       black: '#171717',
@@ -19,6 +20,15 @@ export const theme = {
       m: '1024px',
       s: '768px',
       xs: '640px',
+    },
+    zindex: {
+      mninus: '-1',
+      base: '0',
+      first: '100',
+      second: '200',
+      third: '300',
+      alert: '999',
+      menu: '1000',
     },
   },
 };

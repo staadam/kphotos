@@ -8,16 +8,24 @@ import { validateContactForm } from '../../utils/validation/validateContactForm'
 import { TextField } from '../TextField/TextField';
 import { FormWrapper, ReCAPTCHAPolicy } from './ContactForm.styled';
 import { StyledButton } from '../StyledButton/StyledButton';
+import { useAlert } from '../../utils/hooks/useAlert/useAlert';
 
 export const ContactForm = () => {
   const reRef = React.useRef<ReCAPTCHA>();
+  const { dispatchAlerts } = useAlert();
 
-  const onSubmit = async (values: IContactFormValues) => {
+  const onSubmit = async (values: IContactFormValues, { resetForm }: { resetForm: () => void }) => {
     if (!reRef.current) return;
-    const token = await reRef.current.executeAsync();
-    reRef.current.reset();
-    console.log(values);
-    axios.post('/.netlify/functions/sendMail', { token, ...values }).then(({ data }) => {});
+    try {
+      const token = await reRef.current.executeAsync();
+      reRef.current.reset();
+      await axios.post('/.netlify/functions/sendMail', { token, ...values });
+      dispatchAlerts('Message send.');
+    } catch (e) {
+      dispatchAlerts('Something went wrong please try again later.');
+    } finally {
+      resetForm();
+    }
   };
 
   return (

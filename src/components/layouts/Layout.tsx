@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../assets/GlobalStyles.styled';
 import { theme } from '../../assets/theme';
+import { AlertProvider } from '../../utils/hooks/useAlert/alertProvider';
+import { AlertBox } from '../AlertBox/AlertBox';
 import { Menu } from '../Menu/Menu';
 
 interface ILayoutProps {
@@ -19,10 +21,13 @@ export const Layout = ({ children }: ILayoutProps) => {
     <React.Fragment>
       <ThemeProvider theme={theme.light}>
         <GlobalStyle />
-        <GlobalWrapper>
-          <Menu />
-          {children}
-        </GlobalWrapper>
+        <AlertProvider>
+          <GlobalWrapper>
+            <Menu />
+            {children}
+            <AlertBox />
+          </GlobalWrapper>
+        </AlertProvider>
       </ThemeProvider>
     </React.Fragment>
   );

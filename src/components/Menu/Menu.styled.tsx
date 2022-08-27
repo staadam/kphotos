@@ -9,7 +9,7 @@ export const MenuWrapper = styled.nav<IMenuWrapperProps>`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: ${({ theme }) => theme.zindex.menu};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
