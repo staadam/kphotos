@@ -24,10 +24,10 @@ const animateContactPage: TanimateContactPage = (wrapperRef) => {
   tl.set(bannerElement, { visibility: 'visible' });
   tl.set(formChildren, { visibility: 'visible' });
 
-  tl.from(bannerElement, { duration: 0.5, x: 200, opacity: 0, delay: 0.5 });
+  tl.from(bannerElement, { duration: 0.5, x: 200, opacity: 0, delay: 0.2 });
 
   formChildren.forEach((child, idx) => {
-    tl.from(child, { duration: 0.4, x: -200, opacity: 0, delay: idx / 5 }, 'showFormElements');
+    tl.from(child, { duration: 0.3, x: -200, opacity: 0, delay: idx / 5 }, 'showFormElements-=0.3');
   });
 
   tl.addLabel('showFormElements');
