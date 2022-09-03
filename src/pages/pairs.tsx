@@ -5,60 +5,53 @@ import { Wrapper } from '../components/IndexPage/IndexPage.styled';
 import { Header } from '../components/Header/Header';
 import { Banner } from '../components/Banner/Banner';
 import axios from 'axios';
+import { graphql } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { IPairsProps } from '../utils/types/pages/pairs';
 
 type TAnimateHomePage = (
   wrapperRef: React.RefObject<HTMLDivElement>,
   bannerRef: React.RefObject<HTMLDivElement>
 ) => void;
 
-const animateHomePage: TAnimateHomePage = (wrapperRef, bannerRef) => {
+const animateHomePage: TAnimateHomePage = (wrapperRef) => {
   const isWrapperRefSet = wrapperRef.current;
   if (!isWrapperRefSet) return;
 
   const wrapperElements = wrapperRef.current.children[0];
-  const heroImageElement = bannerRef.current;
-  const titleElement = wrapperElements.querySelector('h1');
-  const descriptionElement = wrapperElements.querySelector('p');
 
   const tl: GSAPTimeline = gsap.timeline();
   tl.set(wrapperElements, { visibility: 'visible' });
-  tl.set(heroImageElement, { visibility: 'visible' });
-
-  tl.from(heroImageElement, { duration: 0.5, x: 200, opacity: 0 })
-    .from(titleElement, { duration: 0.5, x: -200, opacity: 0 }, 'showHeader')
-    .from(
-      descriptionElement,
-      {
-        duration: 0.5,
-        x: -200,
-        opacity: 0,
-      },
-      'showHeader+=0.2'
-    )
-    .addLabel('showHeader');
 };
 
-const IndexPage = () => {
+const Pairs = ({ data }: IPairsProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const bannerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    animateHomePage(wrapperRef, bannerRef);
-
-    axios
-      .post('/.netlify/functions/test', {})
-      .then(({ data }) => console.log(data))
-      .catch((err) => console.error(err));
-  }, []);
-
+  console.log(data);
+  // useEffect(() => {
+  //   animateHomePage(wrapperRef);
+  // }, []);
   return (
     <Layout>
       <Wrapper ref={wrapperRef}>
         <Header />
-        <Banner ref={bannerRef} />
+        {data.allDatoCmsPair.nodes.map((node: any) => (
+          <GatsbyImage image={node.previewPhoto.gatsbyImageData} alt='meh' />
+        ))}
       </Wrapper>
     </Layout>
   );
 };
 
-export default IndexPage;
+export const query = graphql`
+  {
+    allDatoCmsPair {
+      nodes {
+        previewPhoto {
+          gatsbyImageData
+        }
+      }
+    }
+  }
+`;
+
+export default Pairs;
