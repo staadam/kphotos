@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 
-import { animateHomePage } from '../utils/animations/indexPage';
+import { animateHomePage } from '../utils/animations/pages';
 import { IIndexProps } from '../utils/types/pages';
 
 import { Layout } from '../components/layouts/Layout';
