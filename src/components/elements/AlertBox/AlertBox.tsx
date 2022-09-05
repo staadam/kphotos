@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAlert } from '../../utils/hooks/useAlert/useAlert';
+import { useAlert } from '../../../utils/hooks/useAlert/useAlert';
 import { AlertWrapper, Alert } from './AlertBox.styled';
 
 export const AlertBox = () => {

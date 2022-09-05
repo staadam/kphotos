@@ -1,8 +1,8 @@
 import React from 'react';
 import { Layout } from '../components/layouts/Layout';
-import { PhotosContainer } from '../components/PhotosContainer/PhotosContainer';
-import { PortfolioHeader } from '../components/PortfolioHeader/PortfolioHeader';
-import { Wrapper } from '../components/PortfolioPage/PortfolioPage.styled';
+import { PhotosContainer } from '../components/containers/PhotosContainer/PhotosContainer';
+import { PortfolioHeader } from '../components/elements/PortfolioHeader/PortfolioHeader';
+import { Wrapper } from '../components/pages/PortfolioPage/PortfolioPage.styled';
 
 const Portfolio = () => {
   return (

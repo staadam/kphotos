@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { HamburgerButton } from '../HamburgerButton/HamburgerButton';
-import { Logo } from '../Logo/Logo';
+import { HamburgerButton } from '../../elements/buttons/HamburgerButton/HamburgerButton';
+import { Logo } from '../../elements/Logo/Logo';
 import { MenuWrapper, PageLinks, AnimatedStyledLink } from './Menu.styled';
 
 export const Menu = () => {

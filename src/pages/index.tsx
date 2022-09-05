@@ -5,9 +5,9 @@ import { animateHomePage } from '../utils/animations/pages';
 import { IIndexProps } from '../utils/types/pages';
 
 import { Layout } from '../components/layouts/Layout';
-import { Wrapper } from '../components/IndexPage/IndexPage.styled';
-import { Header } from '../components/Header/Header';
-import { Banner } from '../components/Banner/Banner';
+import { Wrapper } from '../components/pages/IndexPage/IndexPage.styled';
+import { Header } from '../components/elements/Header/Header';
+import { Banner } from '../components/elements/Banner/Banner';
 
 const IndexPage = ({ data }: IIndexProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);

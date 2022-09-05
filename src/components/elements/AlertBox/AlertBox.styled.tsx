@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { config } from '../../utils/constants/alert';
+import { config } from '../../../utils/constants/alert';
 
 const timeBar = keyframes`
   from{

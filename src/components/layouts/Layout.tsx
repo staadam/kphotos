@@ -3,8 +3,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../assets/GlobalStyles.styled';
 import { theme } from '../../assets/theme';
 import { AlertProvider } from '../../utils/hooks/useAlert/alertProvider';
-import { AlertBox } from '../AlertBox/AlertBox';
-import { Menu } from '../Menu/Menu';
+import { AlertBox } from '../elements/AlertBox/AlertBox';
+import { Menu } from './Menu/Menu';
 
 interface ILayoutProps {
   children: React.ReactNode;

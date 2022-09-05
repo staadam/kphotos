@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { PhotoColumn, StyledImage, Wrapper } from './PhotosContainer.styled';
-import { splitIntoMultipleArrays } from '../../utils/helpers/splitIntoMultipleArrays';
-import { showElement } from '../../utils/helpers/showElement';
+import { splitIntoMultipleArrays } from '../../../utils/helpers/splitIntoMultipleArrays';
+import { showElement } from '../../../utils/helpers/showElement';
 
 interface IImageData {
   datoCmsPortfolio: {

@@ -3,12 +3,12 @@ import axios from 'axios';
 import { Field, Formik } from 'formik';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { IContactFormValues, initialValues } from '../../utils/constants/contactForm/initialValues';
-import { validateContactForm } from '../../utils/validation/validateContactForm';
+import { IContactFormValues, initialValues } from '../../../utils/constants/contactForm/initialValues';
+import { validateContactForm } from '../../../utils/validation/validateContactForm';
 import { TextField } from '../TextField/TextField';
 import { FormWrapper, ReCAPTCHAPolicy } from './ContactForm.styled';
-import { StyledButton } from '../StyledButton/StyledButton';
-import { useAlert } from '../../utils/hooks/useAlert/useAlert';
+import { StyledButton } from '../../elements/buttons/StyledButton/StyledButton';
+import { useAlert } from '../../../utils/hooks/useAlert/useAlert';
 
 export const ContactForm = () => {
   const reRef = React.useRef<ReCAPTCHA>();
