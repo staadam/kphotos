@@ -1,16 +1,19 @@
 import gsap from 'gsap';
 
-type TAnimateHomePage = (
-  wrapperRef: React.RefObject<HTMLDivElement>,
-  bannerRef: React.RefObject<HTMLDivElement>
-) => void;
+type TAnimatePairPage = (wrapperRef: React.RefObject<HTMLDivElement>) => void;
 
-const animateHomePage: TAnimateHomePage = (wrapperRef) => {
+export const animatePairs: TAnimatePairPage = (wrapperRef) => {
   const isWrapperRefSet = wrapperRef.current;
   if (!isWrapperRefSet) return;
 
-  const wrapperElements = wrapperRef.current.children[0];
-
+  const wrapperElements = Array.from(wrapperRef.current.children);
   const tl: GSAPTimeline = gsap.timeline();
+
   tl.set(wrapperElements, { visibility: 'visible' });
+
+  wrapperElements.forEach((pairElement, idx) => {
+    tl.from(pairElement, { y: 100, opacity: 0, duration: 0.5, delay: idx / 5 }, 'showPairElements+=0.3');
+  });
+
+  tl.addLabel('showPairElements');
 };

@@ -1,8 +1,8 @@
 import gsap from 'gsap';
 
-type TanimateContactPage = (wrapperRef: React.RefObject<HTMLDivElement>) => void;
+type TAnimateContactPage = (wrapperRef: React.RefObject<HTMLDivElement>) => void;
 
-export const animateContactPage: TanimateContactPage = (wrapperRef) => {
+export const animateContactPage: TAnimateContactPage = (wrapperRef) => {
   const isWrapperRefSet = wrapperRef.current;
   if (!isWrapperRefSet) return;
 
