@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  visibility: hidden;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
     grid-template-rows: 100vh 1fr;
