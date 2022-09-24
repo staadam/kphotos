@@ -1,35 +1,23 @@
 import React, { useEffect } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { PhotoColumn, StyledImage, Wrapper } from './PhotosContainer.styled';
 import { splitIntoMultipleArrays } from '../../../utils/helpers/splitIntoMultipleArrays';
 import { showElement } from '../../../utils/helpers/showElement';
+import { IImageData } from '../../../utils/types/pages/portfolio';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-interface IImageData {
-  datoCmsPortfolio: {
-    portfolioContent: { gatsbyImageData: IGatsbyImageData }[];
-  };
+interface IPhotosContainerProps{ 
+  columnCount: number; 
+  images: { gatsbyImageData: IGatsbyImageData }[]; 
 }
 
-export const PhotosContainer = () => {
-  const data = useStaticQuery<IImageData>(graphql`
-    {
-      datoCmsPortfolio {
-        portfolioContent {
-          gatsbyImageData(placeholder: BLURRED, width: 500)
-        }
-      }
-    }
-  `);
-
-  const { portfolioContent } = data.datoCmsPortfolio;
-  const portfolioContentCols = splitIntoMultipleArrays(portfolioContent, 3);
+export const PhotosContainer = ({ columnCount, images }: IPhotosContainerProps) => {
+  const portfolioContentCols = splitIntoMultipleArrays(images, columnCount);
 
   useEffect(() => {
-    const portfolioElements = document.querySelectorAll<HTMLDivElement>('.portfolioElement');
-    const handleScroll = (e: Event) => showElement(portfolioElements);
+    const photosContanerElement = document.querySelectorAll<HTMLDivElement>('.photosContanerElement');
+    const handleScroll = (e: Event) => showElement(photosContanerElement);
 
-    showElement(portfolioElements);
+    showElement(photosContanerElement);
     window.addEventListener('scroll', handleScroll);
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,7 +30,7 @@ export const PhotosContainer = () => {
           {col.map((image, photIdx) => (
             <StyledImage
               image={image.gatsbyImageData}
-              className={'portfolioElement'}
+              className={'photosContanerElement'}
               alt='ss'
               key={`col-${idx}-photo-${photIdx}`}
             />

@@ -22,7 +22,7 @@ export const theme = {
       xs: '640px',
     },
     zindex: {
-      mninus: '-1',
+      minus: '-1',
       base: '0',
       first: '100',
       second: '200',
