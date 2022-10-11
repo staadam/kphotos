@@ -20,8 +20,8 @@ export const animatePortfolioPage: TAnimatePortfolioPage = (wrapperRef) => {
   });
   tl.addLabel('showHeaderElements');
 
-  tl.from(paragraph, { duration: 0.5, x: 50, opacity: 0 }, 'showRest');
-  tl.from(photosContainer, { duration: 0.5, y: 50, opacity: 0 }, 'showRest+=0.2');
+  tl.from(paragraph, { duration: 0.5, x: 50, opacity: 0 }, 'showRest-=0.2');
+  tl.from(photosContainer, { duration: 0.5, y: 50, opacity: 0 }, 'showRest');
 
   tl.addLabel('showRest');
 };

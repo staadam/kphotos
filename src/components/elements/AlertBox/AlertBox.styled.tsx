@@ -41,7 +41,11 @@ export const AlertWrapper = styled.div`
   right: 0;
   z-index: ${({ theme }) => theme.zindex.alert};
 
-  width: 350px;
+  width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
+    width: 350px;
+  }
 `;
 
 export const Alert = styled.div`

@@ -37,4 +37,10 @@ export const query = graphql`
   }
 `;
 
+export const Head = () => (
+  <>
+    <title>Kasia Photos *work title*</title>
+  </>
+);
+
 export default IndexPage;

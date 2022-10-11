@@ -14,16 +14,23 @@ export const Wrapper = styled.section`
 
 export const DescriptionWrapper = styled.div`
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr;
   gap: 75px;
 
   margin-top: 50px;
   margin-bottom: 100px;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
+    grid-template-columns: 3fr 2fr;
+  }
 `;
 
 export const StyledImage = styled(GatsbyImage)<{ orientation: string }>`
-  grid-row: 1 / 2;
-  grid-column: ${({ orientation }) => (orientation === 'horizontal' ? '1 / 2' : '2 / 3')};
+  grid-row: 2 / 3;
+  @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
+    grid-row: 1 / 2;
+    grid-column: ${({ orientation }) => (orientation === 'horizontal' ? '1 / 2' : '2 / 3')};
+  }
 `;
 
 export const DescriptionParagraph = styled.p`
@@ -35,7 +42,9 @@ export const DescriptionParagraph = styled.p`
 
   text-align: center;
 
-  &:not(:first-of-type) {
-    grid-column: 1 / 3;
+  @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
+    &:not(:first-of-type) {
+      grid-column: 1 / 3;
+    }
   }
 `;
