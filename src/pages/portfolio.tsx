@@ -34,4 +34,13 @@ export const query = graphql`
   }
 `;
 
+export const Head = () => (
+  <>
+    <title>Portfolio *work title*</title>
+    <meta name='description' content='Best photographer in Poland' />
+    <meta property='og:title' content='Kontakt *work title*' />
+    <meta property='og:description' content='Best photographer in Poland' />
+  </>
+);
+
 export default Portfolio;

@@ -36,5 +36,11 @@ module.exports = {
         apiToken: process.env.READ_ONLY_DATO_CMS,
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/assets/images/favicon.png',
+      },
+    },
   ],
 };
