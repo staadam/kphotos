@@ -12,7 +12,18 @@ export interface IParagraph {
   paragraph: string;
 }
 
-export type TPairContent = Array<IParagraph | IImage>;
+export interface IPairOverviewProps {
+  header: string;
+  previewPhoto: {
+    gatsbyImageData: IGatsbyImageData;
+    resolutions: {
+      aspectRatio: number;
+    };
+  };
+  pairDescription?: Array<{
+    paragraph: string;
+  }>;
+}
 
 export interface IPairProps {
   data: {
@@ -20,8 +31,16 @@ export interface IPairProps {
       header: string;
       previewPhoto: {
         gatsbyImageData: IGatsbyImageData;
+        resolutions: {
+          aspectRatio: number;
+        };
       };
-      pairContent: TPairContent;
+      pairPhotos: Array<{
+        gatsbyImageData: IGatsbyImageData;
+      }>;
+      pairDescription: Array<{
+        paragraph: string;
+      }>;
     };
   };
 }

@@ -1,15 +1,31 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 export const StyledLink = styled(Link)`
   position: relative;
   display: block;
+  /* padding-top: 56.25%;
+  height: 0; */
   box-shadow: 0px 0px 20px -10px ${({ theme: { colors } }) => colors.main};
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 
   &:hover {
     box-shadow: 0px 0px 20px -7px ${({ theme: { colors } }) => colors.main};
     transform: scale(1.01);
+  }
+`;
+
+export const StyledImage = styled(GatsbyImage)`
+  /* position: absolute; */
+  display: grid;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  img {
+    vertical-align: middle;
   }
 `;
 

@@ -5,12 +5,13 @@ import { showElement } from '../../../utils/helpers/showElement';
 import { IImageData } from '../../../utils/types/pages/portfolio';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-interface IPhotosContainerProps{ 
-  columnCount: number; 
-  images: { gatsbyImageData: IGatsbyImageData }[]; 
+interface IPhotosContainerProps {
+  columnCount: number;
+  images?: { gatsbyImageData: IGatsbyImageData }[];
+  indent?: boolean;
 }
 
-export const PhotosContainer = ({ columnCount, images }: IPhotosContainerProps) => {
+export const PhotosContainer = ({ images = [], columnCount = 3, indent = false }: IPhotosContainerProps) => {
   const portfolioContentCols = splitIntoMultipleArrays(images, columnCount);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export const PhotosContainer = ({ columnCount, images }: IPhotosContainerProps) 
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper indent={indent}>
       {portfolioContentCols.map((col, idx) => (
         <PhotoColumn key={`col-${idx}`}>
           {col.map((image, photIdx) => (

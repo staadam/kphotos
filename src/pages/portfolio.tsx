@@ -18,7 +18,7 @@ const Portfolio = ({ data }: IPortfolioProps) => {
     <Layout>
       <Wrapper ref={wrapperRef}>
         <PortfolioHeader />
-        <PhotosContainer columnCount={3} images={data.datoCmsPortfolio.portfolioContent} />
+        <PhotosContainer columnCount={3} images={data.datoCmsPortfolio.portfolioContent} indent />
       </Wrapper>
     </Layout>
   );

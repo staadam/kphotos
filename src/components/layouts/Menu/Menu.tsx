@@ -18,7 +18,7 @@ export const Menu = () => {
             Portfolio
           </AnimatedStyledLink>
           <AnimatedStyledLink delay={0.1} to='/pairs' onClick={handleCloseMenu} activeClassName='active'>
-            Galeria
+            Galeria par
           </AnimatedStyledLink>
           <AnimatedStyledLink delay={0.2} to='/contact' onClick={handleCloseMenu} activeClassName='active'>
             Kontakt

@@ -103,6 +103,7 @@ const StyledLink = styled(Link)`
 
 export const AnimatedStyledLink = styled(StyledLink)<{ delay: number }>`
   opacity: 0;
+  text-transform: capitalize;
   transform: translateX(300px);
   transition: opacity 0.5s ${({ delay }) => delay + 0.1}s ease,
     transform 0.5s ${({ delay }) => delay + 0.1}s ease;

@@ -7,9 +7,11 @@ import { PairPreviewLink } from '../components/elements/PairPreviewLink/PairPrev
 
 import { IPairsProps } from '../utils/types/pages/pairs';
 import { animatePairs } from '../utils/animations/pages/pairs';
+import { splitIntoMultipleArrays } from '../utils/helpers/splitIntoMultipleArrays';
 
 const Pairs = ({ data }: IPairsProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pairColumns = splitIntoMultipleArrays(data.allDatoCmsPair.nodes, 2);
 
   useEffect(() => {
     animatePairs(wrapperRef);
@@ -18,8 +20,12 @@ const Pairs = ({ data }: IPairsProps) => {
   return (
     <Layout>
       <Wrapper ref={wrapperRef}>
-        {data.allDatoCmsPair.nodes.map((node) => (
-          <PairPreviewLink pairData={node} key={node.pairId} />
+        {pairColumns.map((pairColumn, colIdx) => (
+          <div>
+            {pairColumn.map((node, idx) => (
+              <PairPreviewLink pairData={node} key={`pair-${colIdx}-${idx}`} />
+            ))}
+          </div>
         ))}
       </Wrapper>
     </Layout>
@@ -33,7 +39,7 @@ export const query = graphql`
         pairId
         header
         previewPhoto {
-          gatsbyImageData
+          gatsbyImageData(width: 720)
         }
       }
     }

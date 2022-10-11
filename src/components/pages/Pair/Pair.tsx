@@ -1,22 +1,26 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Layout } from '../../layouts/Layout';
-import { IPairProps } from '../../../utils/types/pages/pair';
 import { Redirect } from '@reach/router';
-import { Title } from '../../elements/Title/Title.styled';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import { generatePairElements } from '../../../utils/helpers/generatePairElements';
+
+import { Layout } from '../../layouts/Layout';
+import { PhotosContainer } from '../../containers/PhotosContainer/PhotosContainer';
+import { PairOverview } from '../../elements/PairOverview';
+
+import { IPairProps } from '../../../utils/types/pages/pair';
+import { Wrapper } from './Pair.styled';
 
 const Pair = ({ data }: IPairProps) => {
-  const { header, previewPhoto } = data.datoCmsPair;
+  const { header, previewPhoto, pairPhotos, pairDescription } = data.datoCmsPair;
   const isBasicContentFetched = header && previewPhoto;
-  console.log(data);
-  if (!isBasicContentFetched) return <Redirect noThrow to={``} />;
+
+  if (!isBasicContentFetched) return <Redirect noThrow to={`/404`} />;
+
   return (
     <Layout>
-      <Title>{header}</Title>
-      <GatsbyImage image={previewPhoto.gatsbyImageData} alt='' />
-      {/* {generatePairElements(pairContent)} */}
+      <Wrapper>
+        <PairOverview header={header} previewPhoto={previewPhoto} pairDescription={pairDescription} />
+        {pairPhotos.length > 0 ? <PhotosContainer columnCount={3} images={pairPhotos} /> : null}
+      </Wrapper>
     </Layout>
   );
 };
@@ -27,6 +31,9 @@ export const query = graphql`
       header
       previewPhoto {
         gatsbyImageData
+        resolutions {
+          aspectRatio
+        }
       }
       pairPhotos {
         gatsbyImageData
