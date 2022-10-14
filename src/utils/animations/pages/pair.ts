@@ -1,9 +1,6 @@
 import gsap from 'gsap';
 
-type TAnimatePair = (
-  wrapperRef: React.RefObject<HTMLDivElement>,
-  bannerRef: React.RefObject<HTMLDivElement>
-) => void;
+type TAnimatePair = (wrapperRef: React.RefObject<HTMLDivElement>) => void;
 
 export const animatePair: TAnimatePair = (wrapperRef) => {
   const isWrapperRefSet = wrapperRef.current;

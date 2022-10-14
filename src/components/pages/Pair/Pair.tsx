@@ -37,13 +37,13 @@ export const query = graphql`
     datoCmsPair(pairId: { eq: $id }) {
       header
       previewPhoto {
-        gatsbyImageData
+        gatsbyImageData(width: 720)
         resolutions {
           aspectRatio
         }
       }
       pairPhotos {
-        gatsbyImageData
+        gatsbyImageData(width: 500)
       }
       pairDescription {
         paragraph
