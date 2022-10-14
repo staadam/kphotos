@@ -6,6 +6,7 @@ export const Wrapper = styled.section`
   width: 75%;
   margin-top: 150px;
   color: ${({ theme }) => theme.colors.main};
+  visibility: hidden;
 
   ${Title} {
     text-align: right;
