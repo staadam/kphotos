@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  --gridGap: 75px;
+  --gridGap: calc(25vw / 2);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(350px, calc(50% - var(--gridGap))), 1fr));
+  grid-template-columns: 1fr;
   gap: var(--gridGap);
 
+  @media (min-width: ${({ theme }) => theme.breakpoints.m}) {
+    --gridGap: 75px;
+    grid-template-columns: 1fr 1fr;
+  }
+
   width: 75%;
-  min-width: 400px;
   margin: 150px auto var(--gridGap);
   visibility: hidden;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import { Redirect } from '@reach/router';
 
@@ -8,16 +8,23 @@ import { PairOverview } from '../../elements/PairOverview';
 
 import { IPairProps } from '../../../utils/types/pages/pair';
 import { Wrapper } from './Pair.styled';
+import { animatePair } from '../../../utils/animations/pages/pair';
 
 const Pair = ({ data }: IPairProps) => {
   const { header, previewPhoto, pairPhotos, pairDescription } = data.datoCmsPair;
   const isBasicContentFetched = header && previewPhoto;
 
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    animatePair(wrapperRef);
+  }, []);
+
   if (!isBasicContentFetched) return <Redirect noThrow to={`/404`} />;
 
   return (
     <Layout>
-      <Wrapper>
+      <Wrapper ref={wrapperRef}>
         <PairOverview header={header} previewPhoto={previewPhoto} pairDescription={pairDescription} />
         {pairPhotos.length > 0 ? <PhotosContainer columnCount={3} images={pairPhotos} /> : null}
       </Wrapper>

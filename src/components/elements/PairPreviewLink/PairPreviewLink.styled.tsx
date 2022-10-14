@@ -5,8 +5,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 export const StyledLink = styled(Link)`
   position: relative;
   display: block;
-  /* padding-top: 56.25%;
-  height: 0; */
+
   box-shadow: 0px 0px 20px -10px ${({ theme: { colors } }) => colors.main};
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 
@@ -21,8 +20,6 @@ export const StyledImage = styled(GatsbyImage)`
   display: grid;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
 
   img {
     vertical-align: middle;

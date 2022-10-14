@@ -6,11 +6,9 @@ export const PairPreviewLink = ({ pairData }: { pairData: IPairData }) => {
   const { pairId, header, previewPhoto } = pairData;
 
   return (
-    <div>
-      <StyledLink to={`/pair/${pairId}`}>
-        <StyledImage alt={header} image={previewPhoto.gatsbyImageData} />
-        <Label>{header}</Label>
-      </StyledLink>
-    </div>
+    <StyledLink to={`/pair/${pairId}`}>
+      <StyledImage alt={header} image={previewPhoto.gatsbyImageData} />
+      <Label>{header}</Label>
+    </StyledLink>
   );
 };

@@ -21,7 +21,7 @@ const Pairs = ({ data }: IPairsProps) => {
     <Layout>
       <Wrapper ref={wrapperRef}>
         {pairColumns.map((pairColumn, colIdx) => (
-          <div>
+          <div key={`col-${colIdx}`}>
             {pairColumn.map((node, idx) => (
               <PairPreviewLink pairData={node} key={`pair-${colIdx}-${idx}`} />
             ))}
